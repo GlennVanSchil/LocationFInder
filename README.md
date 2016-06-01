@@ -10,6 +10,7 @@ Find cities within a range of an other city
 6. Run ElasticSearch
 7. Import LocationFinder in your IDE as a Maven project
 8. Run the Test class from "LocationFinder\src\test\java\be\location\repository\CityTest.java"
+9. Change the default city "Brugge" on rule #42 "List<City> centers = esCityDAO.findCityByName("Brugge");". This is case sensitive.
 
 ## Aditional information
 The location.sql script contains all cities from Belgium. You can delete or create entries if you want too. As long as you don't change the names and/or structure, no code changes are required.
