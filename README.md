@@ -1,4 +1,4 @@
-# LocationFInder
+# LocationFinder
 Find cities within a range of an other city
 ## Guide
 ### Windows
