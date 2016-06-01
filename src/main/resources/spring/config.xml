@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+    <context:component-scan base-package="be.location"/>
+
+    <tx:annotation-driven/>
+
+    <bean id="esClient" class="be.location.repository.EsClient">
+        <property name="host" value="localhost"/>
+        <property name="port" value="9300"/>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/location"/>
+        <property name="username" value="root"/>
+    </bean>
+
+    <bean id="jdbcCityDAO" class="be.location.repository.JdbcCityDAO">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="esCityDAO" class="be.location.repository.EsCityDAO"/>
+
+</beans>
