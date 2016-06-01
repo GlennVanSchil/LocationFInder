@@ -2,6 +2,9 @@ package be.location.repository;
 
 import be.location.data.City;
 import be.location.data.GeoPoint;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,14 +27,15 @@ import java.util.List;
 public class CityTest {
 
     @Autowired
-    JdbcCityDAO jdbcCityDAO;
-    @Autowired
-    EsCityDAO esCityDAO;
-
+    CityDAO esCityDAO;
 
     @Before
     public void setUp() throws Exception {
-        List<City> cities = jdbcCityDAO.listCities();
+        Gson gson = new Gson();
+        Type listType = new TypeToken<ArrayList<City>>() {
+        }.getType();
+        JsonReader jsonReader = new JsonReader(new InputStreamReader(this.getClass().getResourceAsStream("/json/cities.json")));
+        List<City> cities = gson.fromJson(jsonReader, listType);
         esCityDAO.create(cities);
     }
 

@@ -38,7 +38,7 @@ import static org.elasticsearch.index.query.QueryBuilders.wildcardQuery;
  * @author Glenn Van Schil
  *         Created on 1/06/2016
  */
-public class EsCityDAO {
+public class CityDAO {
 
     private static final String INDEX = "location";
     private static final String TYPE = "city";

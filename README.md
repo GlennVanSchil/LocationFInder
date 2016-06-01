@@ -2,15 +2,11 @@
 Find cities within a range of an other city
 ## Guide
 ### Windows
-1. Install XAMPP: https://www.apachefriends.org/index.html
-2. Run XAMPP and start Apache and MySQL
-3. Go to http://localhost/phpmyadmin/
-4. Import the SQL script from "LocationFinder\src\main\resources\sql\location.sql"
-5. Install ElasticSearch 2.3.1: https://www.elastic.co/downloads/past-releases/elasticsearch-2-3-1
-6. Run ElasticSearch
-7. Import LocationFinder in your IDE as a Maven project
-8. Run the Test class from "LocationFinder\src\test\java\be\location\repository\CityTest.java"
-9. Change the default city "Brugge" on rule #42 "List<City> centers = esCityDAO.findCityByName("Brugge");". This is case sensitive.
+1. Install ElasticSearch 2.3.1: https://www.elastic.co/downloads/past-releases/elasticsearch-2-3-1
+2. Run ElasticSearch
+3. Import LocationFinder in your IDE as a Maven project
+4. Run the Test class from "LocationFinder\src\test\java\be\location\repository\CityTest.java"
+5. Change the default city "Brugge" on rule #42 "List<City> centers = esCityDAO.findCityByName("Brugge");". This is case sensitive.
 
 ## Aditional information
 The location.sql script contains all cities from Belgium. You can delete or create entries if you want too. As long as you don't change the names and/or structure, no code changes are required.
