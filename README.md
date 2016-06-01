@@ -9,7 +9,7 @@ Find cities within a range of an other city
 5. Change the default city "Brugge" on rule #42 "List<City> centers = esCityDAO.findCityByName("Brugge");". This is case sensitive.
 
 ## Aditional information
-The location.sql script contains all cities from Belgium. You can delete or create entries if you want too. As long as you don't change the names and/or structure, no code changes are required.
+The "LocationFinder\src\main\resources\json\cities.json" file contains all cities from Belgium. You can delete or create entries if you want too. As long as you don't change the names and/or structure, no code changes are required.
 
 All the configuration of the application happens in "LocationFinder\src\main\resources\spring\config.xml". Everything is default but if you would like to change the host or port of ElasticSearch for example you simply change the host and port property:
 
