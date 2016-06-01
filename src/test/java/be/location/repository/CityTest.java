@@ -27,7 +27,7 @@ import java.util.List;
 public class CityTest {
 
     @Autowired
-    CityDAO esCityDAO;
+    CityDAO cityDAO;
 
     @Before
     public void setUp() throws Exception {
@@ -36,21 +36,21 @@ public class CityTest {
         }.getType();
         JsonReader jsonReader = new JsonReader(new InputStreamReader(this.getClass().getResourceAsStream("/json/cities.json")));
         List<City> cities = gson.fromJson(jsonReader, listType);
-        esCityDAO.create(cities);
+        cityDAO.create(cities);
     }
 
     @After
     public void tearDown() throws Exception {
-        esCityDAO.deleteIndex();
+        cityDAO.deleteIndex();
     }
 
     @Test
     public void testListCities() throws Exception {
-        List<City> centers = esCityDAO.findCityByName("Brugge");
+        List<City> centers = cityDAO.findCityByName("Brugge");
         System.out.println("<===========================================>");
         System.out.println();
         for (City center : centers) {
-            List<City> citiesInRange = esCityDAO.findCityInRange(center.getGeoPoint(), 10);
+            List<City> citiesInRange = cityDAO.findCityInRange(center.getGeoPoint(), 10);
             for (City city : citiesInRange) {
                 System.out.println(city.getZipcode() + " - " + city.getName() + " - " + this.distance(center.getGeoPoint(), city.getGeoPoint()) + " km");
             }
