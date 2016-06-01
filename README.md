@@ -6,7 +6,7 @@ Find cities within a range of an other city
 2. Run ElasticSearch
 3. Import LocationFinder in your IDE as a Maven project
 4. Run the Test class from "LocationFinder\src\test\java\be\location\repository\CityTest.java"
-5. Change the default city "Brugge" on rule #42 "List<City> centers = esCityDAO.findCityByName("Brugge");". This is case sensitive.
+5. Change the default city "Brugge" on rule #42 "List<City> centers = cityDAO.findCityByName("Brugge");". This is case sensitive.
 
 ## Aditional information
 The "LocationFinder\src\main\resources\json\cities.json" file contains all cities from Belgium. You can delete or create entries if you want too. As long as you don't change the names and/or structure, no code changes are required.
