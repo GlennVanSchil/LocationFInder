@@ -23,7 +23,6 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -109,11 +108,9 @@ public class CityDAO {
                 .actionGet();
 
 
-        SearchHit[] hits = response.getHits().getHits();
-
         scroll:
         while (true) {
-
+            SearchHit[] hits = response.getHits().getHits();
             for (SearchHit hit : hits) {
                 Map<String, Object> result = hit.getSource();
                 cities.add(mapper.convertValue(result, City.class));
@@ -145,11 +142,9 @@ public class CityDAO {
                 .actionGet();
 
 
-        SearchHit[] hits = response.getHits().getHits();
-
         scroll:
         while (true) {
-
+            SearchHit[] hits = response.getHits().getHits();
             for (SearchHit hit : hits) {
                 Map<String, Object> result = hit.getSource();
                 cities.add(mapper.convertValue(result, City.class));

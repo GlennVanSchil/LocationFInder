@@ -46,15 +46,14 @@ public class CityTest {
 
     @Test
     public void testListCities() throws Exception {
-        List<City> centers = cityDAO.findCityByName("Brugge");
+        List<City> centers = cityDAO.findCityByName("Diest");
         System.out.println("<===========================================>");
         System.out.println();
         for (City center : centers) {
-            List<City> citiesInRange = cityDAO.findCityInRange(center.getGeoPoint(), 10);
+            List<City> citiesInRange = cityDAO.findCityInRange(center.getGeoPoint(), 40);
             for (City city : citiesInRange) {
                 System.out.println(city.getZipcode() + " - " + city.getName() + " - " + this.distance(center.getGeoPoint(), city.getGeoPoint()) + " km");
             }
-            System.out.println();
         }
         System.out.println("<===========================================>");
     }
